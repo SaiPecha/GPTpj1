@@ -1,0 +1,47 @@
+.radar-lab { --scope-ink: var(--accent, #83ebbd); position: relative; width: 100%; overflow: hidden; color: var(--text, #e9efec); }
+.radar-lab *, .radar-lab *::before, .radar-lab *::after { box-sizing: border-box; }
+.radar-scope-wrap { position: relative; margin: 0 auto; max-width: 520px; }
+.radar-scope { display: block; width: 100%; height: auto; overflow: visible; }
+.radar-top-label { display: flex; gap: 8px; align-items: center; justify-content: center; color: var(--accent, #83ebbd); font: 500 9px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: 1.7px; margin: 12px 0 6px; opacity: .9; }
+.radar-status-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent, #83ebbd); box-shadow: 0 0 8px color-mix(in srgb, var(--accent, #83ebbd) 45%, transparent); }
+.radar-bottom-label { display: flex; justify-content: space-between; padding: 0 26px; margin: -1px 0 18px; color: var(--muted, #8a9c99); font: 8px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: 1px; opacity: .75; }
+.radar-sweep { transform-origin: 240px 240px; animation: radar-sweep-turn 12s linear infinite; }
+.radar-echo-out { transform-origin: 240px 240px; animation: radar-echo-expand 4s linear infinite; }
+.radar-echo-back { transform-box: fill-box; transform-origin: center; animation: radar-echo-expand 4s linear 2s infinite; opacity: 0; }
+.radar-lab.is-paused .radar-sweep, .radar-lab.is-paused .radar-echo-out, .radar-lab.is-paused .radar-echo-back { animation-play-state: paused; }
+.radar-lab-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px 8px; }
+.radar-mode-buttons { display: flex; gap: 3px; padding: 4px; border: 1px solid color-mix(in srgb, var(--accent, #83ebbd) 12%, transparent); border-radius: 9px; background: color-mix(in srgb, var(--accent, #83ebbd) 3%, transparent); }
+.radar-mode-buttons button, .radar-play-button { cursor: pointer; border: 0; font-family: inherit; font-size: 12px; line-height: 1.4; }
+.radar-mode-buttons button { background: transparent; color: var(--muted, #8a9c99); border-radius: 5px; padding: 7px 13px; transition: background .2s, color .2s; }
+.radar-mode-buttons button.active { background: color-mix(in srgb, var(--accent, #83ebbd) 15%, transparent); color: var(--accent, #83ebbd); }
+.radar-mode-buttons button:hover { color: var(--text, #e9efec); }
+.radar-play-button { display: grid; place-items: center; background: color-mix(in srgb, var(--accent, #83ebbd) 8%, transparent); color: var(--accent, #83ebbd); border: 1px solid color-mix(in srgb, var(--accent, #83ebbd) 15%, transparent); width: 36px; height: 36px; border-radius: 8px; }
+.radar-compact-pause { position: absolute; z-index: 1; top: 4px; right: 7px; width: 30px; height: 30px; }
+.radar-lab button:focus-visible, .radar-lab input:focus-visible { outline: 2px solid var(--accent, #83ebbd); outline-offset: 3px; }
+.radar-lab-explanation { margin: 0 24px 24px; padding-top: 20px; border-top: 1px solid color-mix(in srgb, var(--accent, #83ebbd) 12%, transparent); }
+.radar-distance-label { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; margin-bottom: 12px; }
+.radar-distance-label span:last-child { color: var(--muted, #8a9c99); }
+.radar-lab input[type=range] { width: 100%; height: 4px; accent-color: var(--accent, #83ebbd); cursor: pointer; }
+.radar-doppler-demo { margin-top: 20px; }
+.radar-direction-label { font-size: 12px; margin-bottom: 10px; }
+.radar-direction-buttons { display: flex; gap: 5px; flex-wrap: wrap; }
+.radar-direction-buttons button { border: 1px solid color-mix(in srgb, var(--accent, #83ebbd) 13%, transparent); border-radius: 6px; padding: 7px 10px; background: transparent; color: var(--muted, #8a9c99); font: inherit; font-size: 11px; cursor: pointer; }
+.radar-direction-buttons button.active { background: color-mix(in srgb, var(--accent, #83ebbd) 12%, transparent); border-color: color-mix(in srgb, var(--accent, #83ebbd) 35%, transparent); color: var(--text, #e9efec); }
+.radar-wave-comparison { border: 1px solid color-mix(in srgb, var(--accent, #83ebbd) 10%, transparent); border-radius: 8px; padding: 13px 12px 10px; margin-top: 14px; overflow: hidden; }
+.radar-wave-label { display: flex; justify-content: space-between; gap: 8px; color: var(--muted, #8a9c99); font-size: 10px; line-height: 1.5; }
+.radar-wave-label span:last-child { opacity: .75; }
+.radar-waveform { display: block; width: 100%; height: 38px; overflow: hidden; margin: 3px 0 9px; color: var(--muted, #8a9c99); }
+.radar-wave-motion { animation: radar-wave-scroll var(--radar-wave-duration, 1.5s) linear infinite; }
+.radar-lab.is-paused .radar-wave-motion { animation-play-state: paused; }
+.radar-wave-time { color: var(--muted, #8a9c99); font-size: 9px; text-align: right; opacity: .7; }
+.radar-doppler-result { margin-top: 12px; font-size: 12px; line-height: 1.7; }
+.radar-lab-explanation p { color: var(--muted, #8a9c99); font-size: 13px; line-height: 1.8; margin: 20px 0 14px; }
+.radar-lab-detail { background: color-mix(in srgb, var(--accent, #83ebbd) 7%, transparent); border: 1px solid color-mix(in srgb, var(--accent, #83ebbd) 12%, transparent); border-radius: 8px; color: var(--accent, #83ebbd); padding: 12px 14px; font-size: 12px; }
+.radar-lab-explanation small { display: block; font-size: 10px; line-height: 1.5; color: var(--muted, #8a9c99); margin-top: 12px; }
+.radar-lab.compact .radar-scope-wrap { max-width: 470px; }
+.radar-lab.compact .radar-top-label { margin-top: 10px; }
+@keyframes radar-sweep-turn { from { transform: rotate(-50deg); } to { transform: rotate(310deg); } }
+@keyframes radar-echo-expand { 0% { transform: scale(.01); opacity: .8; } 85% { opacity: .2; } 100% { transform: scale(1); opacity: 0; } }
+@keyframes radar-wave-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--radar-wave-period, 60px))); } }
+@media (max-width: 480px) { .radar-bottom-label { font-size: 6.5px; padding: 0 22px; } .radar-top-label { font-size: 8px; } .radar-lab-toolbar { padding: 12px 12px 6px; } .radar-mode-buttons button { padding: 7px 10px; } .radar-lab-explanation { margin: 0 16px 20px; } }
+@media (prefers-reduced-motion: reduce) { .radar-sweep, .radar-echo-out, .radar-echo-back, .radar-wave-motion { animation: none; } .radar-sweep { transform: rotate(-50deg); } .radar-echo-out { transform: scale(.5); opacity: .5; } .radar-echo-back { transform: scale(.4); opacity: .3; } .radar-mode-buttons button { transition: none; } }
